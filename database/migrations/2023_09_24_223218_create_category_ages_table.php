@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('food', function (Blueprint $table) {
+        Schema::create('category_ages', function (Blueprint $table) {
             $table->id();
-            $table->string('ingredient');
-            $table->string('amount')->default('50g');
+            $table->integer('stage');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('food');
+        Schema::dropIfExists('category_ages');
     }
 };

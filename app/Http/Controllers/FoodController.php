@@ -1,10 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Food;
+use Illuminate\Routing\Controller;
 use App\Http\Requests\StoreFoodRequest;
 use App\Http\Requests\UpdateFoodRequest;
+use App\Http\Resources\CategoryAgeResource;
+use App\Models\CategoryAge;
+use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 
 class FoodController extends Controller
 {
@@ -13,7 +18,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //
+        return CategoryAgeResource::collection(CategoryAge::all());
     }
 
     /**

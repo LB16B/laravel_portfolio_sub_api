@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreFoodRequest;
 use App\Http\Requests\UpdateFoodRequest;
+use App\Http\Resources\FoodResource;
 
 class FoodController extends Controller
 {
@@ -16,23 +17,25 @@ class FoodController extends Controller
      */
     public function index()
     {
-        return Food::all();
+        return FoodResource::collection(Food::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    // /**
+    //  * Show the form for creating a new resource.
+    //  */
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreFoodRequest $request)
     {
-        //
+        $food = Food::create($request->validated());
+
+        return FoodResource::make($food);
     }
 
     /**
@@ -40,15 +43,7 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Food $food)
-    {
-        //
+        return FoodResource::make($food);
     }
 
     /**
@@ -56,7 +51,9 @@ class FoodController extends Controller
      */
     public function update(UpdateFoodRequest $request, Food $food)
     {
-        //
+        $food->update($request->validated());
+
+        return FoodResource::make($food);
     }
 
     /**
@@ -64,6 +61,8 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        //
+        $food->delete();
+
+        return response()->noContent();
     }
 }

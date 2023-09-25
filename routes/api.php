@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\V1\FoodController;
+use App\Http\Controllers\Api\V1\ReviewController;
+use App\Http\Controllers\Api\V1\CategoryAgeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     Route::apiResource('/foods', FoodController::class);
+    Route::apiResource('/reviews', ReviewController::class);
+    Route::apiResource('/category_ages', CategoryAgeController::class);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

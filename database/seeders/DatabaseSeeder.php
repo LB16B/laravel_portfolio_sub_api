@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
     {
         Food::factory(10)->create();
         Review::factory(10)->create();
-        CategoryAge::factory(10)->create();
+        CategoryAge::factory(3)->create();
     }
 }

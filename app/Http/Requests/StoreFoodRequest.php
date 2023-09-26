@@ -22,7 +22,7 @@ class StoreFoodRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ingredient' => 'required|string|max:255'
+            'name' => 'required|string|max:255'
         ];
     }
 }

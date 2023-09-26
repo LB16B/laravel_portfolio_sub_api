@@ -16,7 +16,7 @@ class CategoryAgeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'stage' => $this->stage,
+            'name' => $this->name,
         ];
     }
 }

@@ -7,7 +7,23 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CategoryAge>
+ *
  */
+
+class CategoryAgeFakerProvider extends Base
+{
+    protected static $name = [
+        '5、6ヶ月(初期)',
+        '7、8ヶ月(中期)',
+        '9~11ヶ月(後期)',
+    ];
+
+    public static function name()
+    {
+        return static::randomElement(static::$name);
+    }
+}
+
 class CategoryAgeFactory extends Factory
 {
     /**
@@ -17,8 +33,10 @@ class CategoryAgeFactory extends Factory
      */
     public function definition(): array
     {
+        $this->faker->addProvider(new CategoryAgeFakerProvider($this->faker));
+
         return [
-            'stage' => rand(1, 4)
+            'name' => CategoryAgeFakerProvider::name(),
         ];
     }
 }

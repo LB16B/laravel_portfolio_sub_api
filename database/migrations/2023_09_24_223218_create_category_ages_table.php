@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('category_ages', function (Blueprint $table) {
             $table->id();
-            $table->integer('stage');
+            $table->string('name');
             $table->timestamps();
         });
     }

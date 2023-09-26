@@ -44,7 +44,9 @@ class CategoryAgeController extends Controller
      */
     public function update(UpdateCategoryAgeRequest $request, CategoryAge $categoryAge)
     {
-        //
+        $categoryAge->update($request->validated());
+
+        return CategoryAgeResource::make($categoryAge);
     }
 
     /**
@@ -52,6 +54,8 @@ class CategoryAgeController extends Controller
      */
     public function destroy(CategoryAge $categoryAge)
     {
-        //
+        $categoryAge->delete();
+
+        return response()->noContent();
     }
 }
